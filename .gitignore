@@ -1,0 +1,13 @@
+public/
+data/
+.env
+node_modules/
+.DS_Store
+.idea
+hero
+resources/
+package.json
+webpack.config.js
+yarn.lock
+.editorconfig 
+themes/news\.12bit\.vn/assets/main\.js

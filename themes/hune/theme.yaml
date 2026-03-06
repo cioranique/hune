@@ -1,0 +1,10 @@
+name: hune
+license: MIT
+description: Theme for hune
+homepage: 'https://gohugo.io/
+tags: []'
+features: []
+min_version: '0.41'
+author:
+  name: hune
+  homepage: 'https://gohugo.io/'

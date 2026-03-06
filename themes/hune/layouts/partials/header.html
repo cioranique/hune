@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name=theme-color content=#282828>
+  <title>{{ .Title }}</title>
+  {{ template "_internal/opengraph.html" . -}}
+  {{ template "_internal/twitter_cards.html" . -}}
+  {{ template "_internal/schema.html" . -}}
+  {{ if isset .Site.Params "favicon" }}
+  <link rel="icon" href="{{ .Site.Params.favicon | absURL }}" />
+  {{ end }}
+  <!-- <link href="https://fonts.googleapis.com/css?family=Quicksand:700" rel="stylesheet"> -->
+  {{ $post := resources.Get "css/main.scss" }}
+  {{ $style :=  $post | resources.ToCSS | minify }}
+  <link href="{{ $style.RelPermalink }}" rel="stylesheet" type="text/css" />
+  
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://www.google.com">
+    <link rel="preconnect" href="https://www.google.com">
+ 
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+  {{ if eq (relURL .RelPermalink) ("/topic/podcasts/" | safeHTML) }}
+ <style>.link-title { margin-right: 40px;}</style>
+{{ end }}
+</head> 
+<body> 
+  <!-- <header id="masthead">
+    
+         <div class="bookmark" title="Your bookmark links">
+        
+            <div class="dropdown-list-header">
+              <span>Your bookmarks</span>
+              <span class="i-octicon js-b-close-mobile-dropdown" data-icon="x"></span>
+            </div>
+            <div class="js-b-dropdown dropdown-list"></div>
+          </div>
+          
+        </div>
+    </header>  -->
+  <header class="header"  style="
+  
+  background-image: url(/img/pattern2-50437ad843b72d99ae0e59ee57e8f037e5103922fcc6789b339cbb62928cc11a.svg);
+  background-size: initial;
+  background-repeat: repeat;">
+    <a href="/" class="header__logo"></a>
+    <!-- <a href="/bookmarks/" class="js-b-indicator indicator  ">
+      <span class="bt">  <i class="fa fa-bookmark"></i></span>
+     <span class="js-b-counter counter">0</span>
+   </a> -->
+    <!-- <nav class="header__nav  header__nav--main">
+      <ul class="header__nav-list">
+        <li class="header__nav-link">Home</li>
+        <li class="header__nav-link">Blog</li>
+        <li class="header__nav-link">Features</li>
+        <li class="header__nav-link">Pricing</li>
+        <li class="header__nav-link">Documentation</li>
+      </ul>
+    </nav> -->
+  
+    {{ partial "topic-filter" . }}
+    
+    <!-- {{ partial "search-input" . }} -->
+    <!-- <button class="header__button">Add my site</button> -->
+    <!-- <div class="header__nav--mobile">
+      <!--  START Hamburger Toggle  -->
+      <!-- <div id="menu-toggle" class="d-block d-md-none">
+        <div id="hamburger">
+          <span class="cs"></span>
+          <span class="cs"></span>
+        </div>
+        <div id="cross">
+          <span class="cs"></span>
+          <span class="cs"></span>
+        </div> 
+      </div> 
+    </div>  -->
+  
+   
+  </header>
+
+    
+  

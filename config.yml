@@ -1,0 +1,46 @@
+languageCode: en-us
+copyright: This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+title: Hune
+description: Browse multiple web development sites at the same time.
+baseURL: /
+theme: hune
+enableGitInfo: true
+enableEmoji: true
+enableRobotsTXT: false
+disableHugoGeneratorInject: true
+googleAnalytics: 
+paginate: 40
+outputs:
+  home:
+  - HTML
+  - RSS
+  - JSON
+  section:
+    - HTML
+    - RSS
+ 
+disableKinds:
+ # - taxonomyTerm
+  - sitemap
+params:
+  description: Browse multiple web development sites at the same time.
+  favicon: img/favicon.png
+  images:
+    - img/home.png
+  cta:
+    title: Add my site
+    url: 'https://github.com/cioranique/hune'
+blackfriday:
+  hrefTargetBlank: true
+  noreferrerLinks: true 
+# menu:
+#   main:
+#   - identifier: contribute
+#     title: Thêm links
+#     url: /pages/about.html
+taxonomies:
+  topic: topic
+  site: site
+  bookmark: bookmark
+  # tags: tags
+  category: category

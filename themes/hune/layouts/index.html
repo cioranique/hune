@@ -1,0 +1,35 @@
+{{ partial "header" . }}
+<!-- {{ partial "topic-filter" . }} -->
+
+<main>
+
+        <!-- {{ range $key, $value := .Site.Taxonomies.category }}
+	<li><a href="/category/{{ $key | urlize  }}">{{ $key | humanize }}</a> ({{ len $value }})</li>
+{{ end }} -->
+        <div class="links">
+                        <div class="bookmark js-b-dropdown" title="Your bookmark links"></div>
+                {{ $paginator := .Paginate (where .Pages "Type" "links") }}
+                {{ range $paginator.Pages }}
+                {{ if or (eq .Params.topic "Webdev") (eq .Params.topic "Hacker News") }}
+                {{ partial "link" . }}
+                {{end}}  
+                {{ end }}
+
+         
+                
+        
+                <div class="load-more center">
+                        {{ if .Paginator.HasNext }}
+                                <a class="more" href="{{ .Paginator.Next.URL }}" >More posts</a>
+                         
+                        {{ end }}
+                       
+                </div>
+                
+         
+          </div>
+
+               
+
+</main><!-- end #content -->
+{{ partial "footer" . }}

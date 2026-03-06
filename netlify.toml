@@ -1,0 +1,53 @@
+[build]
+publish = "public"
+command = "hugo --gc --minify"
+
+
+[context.production.environment]
+HUGO_VERSION = "0.55.5"
+HUGO_ENV = "production"
+HUGO_ENABLEGITINFO = "true"
+ 
+[context.split1]
+command = "hugo --gc --minify --enableGitInfo"
+
+[context.split1.environment]
+HUGO_VERSION = "0.55.5"
+HUGO_ENV = "production"
+
+[context.deploy-preview]
+command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
+
+[context.deploy-preview.environment]
+HUGO_VERSION = "0.55.5"
+
+[context.branch-deploy]
+command = "hugo --gc --minify -b $DEPLOY_PRIME_URL"
+
+[context.branch-deploy.environment]
+HUGO_VERSION = "0.55.5"
+
+[context.next.environment]
+HUGO_ENABLEGITINFO = "true"
+
+# A redirect rule with all the supported properties
+[[redirects]]
+  from = "/site"
+  to = "/"
+  [[redirects]]
+  from = "/topic"
+  to = "/"
+
+
+    [[headers]]
+	# For all requests
+	for = "/*"
+[headers.values]
+	# Security headers
+	X-Frame-Options = "DENY"
+	X-XSS-Protection = "1; mode=block"
+	X-Content-Type-Options = "nosniff"
+	# For HSTS
+	Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+	Link = "</css/main.min.css>; rel=preload; as=stylesheet"
